@@ -88,10 +88,9 @@ FQDN = os.getenv('SECURITY_MONKEY_FQDN', 'ec2-XX-XXX-XXX-XXX.compute-1.amazonaws
 API_PORT = '5000'
 WEB_PORT = '443'
 WEB_PATH = '/static/ui.html'
-FRONTED_BY_NGINX = True
+FRONTED_BY_NGINX = env_to_bool(os.getenv(SECURITY_MONKEY_FRONTED_BY_NGINX,True))
 NGINX_PORT = '443'
 BASE_URL = 'https://{}/'.format(FQDN)
-
 SECRET_KEY = '<INSERT_RANDOM_STRING_HERE>'
 
 MAIL_DEFAULT_SENDER = os.getenv('SECURITY_MONKEY_EMAIL_DEFAULT_SENDER', 'securitymonkey@example.com')
