@@ -65,4 +65,4 @@ COPY docker/nginx/nginx.conf /etc/nginx/nginx.conf
 WORKDIR /usr/local/src/security_monkey
 EXPOSE 5000
 
-ENTRYPOINT ["/usr/local/src/security_monkey/docker/api-start.sh"]
+CMD ["/usr/local/src/security_monkey/docker/api-start.sh"]

@@ -73,7 +73,7 @@ SQLALCHEMY_DATABASE_URI = 'postgresql://%s:%s@%s:%d/%s' % (
     os.getenv('SECURITY_MONKEY_POSTGRES_USER', 'postgres'),
     os.getenv('SECURITY_MONKEY_POSTGRES_PASSWORD', 'securitymonkeypassword'),
     os.getenv('SECURITY_MONKEY_POSTGRES_HOST', 'localhost'),
-    os.getenv('SECURITY_MONKEY_POSTGRES_PORT', 5432),
+    int(os.getenv('SECURITY_MONKEY_POSTGRES_PORT', 5432)),
     os.getenv('SECURITY_MONKEY_POSTGRES_DATABASE', 'secmonkey')
 )
 
