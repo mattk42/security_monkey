@@ -85,7 +85,7 @@ SQLALCHEMY_MAX_OVERFLOW = 15
 ENVIRONMENT = 'ec2'
 USE_ROUTE53 = False
 FQDN = os.getenv('SECURITY_MONKEY_FQDN', 'ec2-XX-XXX-XXX-XXX.compute-1.amazonaws.com')
-API_PORT = '5000'
+ECURITY_REGISTERABLE
 WEB_PORT = '443'
 WEB_PATH = '/static/ui.html'
 FRONTED_BY_NGINX = True
@@ -95,7 +95,7 @@ BASE_URL = 'https://{}/'.format(FQDN)
 SECRET_KEY = '<INSERT_RANDOM_STRING_HERE>'
 
 MAIL_DEFAULT_SENDER = os.getenv('SECURITY_MONKEY_EMAIL_DEFAULT_SENDER', 'securitymonkey@example.com')
-SECURITY_REGISTERABLE = True
+SECURITY_REGISTERABLE = env_to_bool(os.getenv('SECURITY_MONKEY_SECURITY_REGISTERABLE', True))
 SECURITY_CONFIRMABLE = False
 SECURITY_RECOVERABLE = False
 SECURITY_PASSWORD_HASH = 'bcrypt'
@@ -134,7 +134,7 @@ CORE_THREADS = 25
 MAX_THREADS = 30
 
 # SSO SETTINGS:
-ACTIVE_PROVIDERS = []  # "ping", "google" or "onelogin"
+ACTIVE_PROVIDERS = os.getenv('SECURITY_MONKEY_ACTIVE_PROVIDERS', [])  # "ping", "google" or "onelogin"
 
 PING_NAME = ''  # Use to override the Ping name in the UI.
 PING_REDIRECT_URI = "{BASE}api/1/auth/ping".format(BASE=BASE_URL)
@@ -145,9 +145,9 @@ PING_USER_API_URL = ''  # Often something ending in idp/userinfo.openid
 PING_JWKS_URL = ''  # Often something ending in JWKS
 PING_SECRET = ''  # Provided by your administrator
 
-GOOGLE_CLIENT_ID = ''
-GOOGLE_AUTH_ENDPOINT = ''
-GOOGLE_SECRET = ''
+GOOGLE_CLIENT_ID = os.getenv('SECURITY_MONKEY_GOOGLE_CLIENT_ID', '')
+GOOGLE_AUTH_ENDPOINT = os.getenv('SECURITY_MONKEY_GOOGLE_AUTH_ENDPOINT', '')
+GOOGLE_SECRET = os.getenv('SECURITY_MONKEY_GOOGLE_SECRET', '')
 
 ONELOGIN_APP_ID = '<APP_ID>'  # OneLogin App ID provider by your administrator
 ONELOGIN_EMAIL_FIELD = 'User.email'  # SAML attribute used to provide email address
